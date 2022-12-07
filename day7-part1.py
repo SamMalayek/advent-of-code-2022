@@ -3,11 +3,10 @@ file_input = open("input-day7.txt",'r')
 cli = [l.strip() for l in file_input.readlines()]
 
 class TreeNode:  # if dir, then string. if file, then int
-    def __init__(self, dirName, parent=None, files=None, childDirs=None):
+    def __init__(self, dirName, parent=None, children=None):
         self.dirName = dirName
         self.parent = parent
-        self.files = files or []
-        self.childDirs = childDirs or []
+        self.children = children or []
 
 def main():
     
@@ -23,17 +22,17 @@ def main():
                     cur = cur.parent
                 else:
                     cd = TreeNode(tokens[2], cur)
-                    cur.childDirs.append(cd)
+                    cur.children.append(cd)
                     cur = cd
         elif tokens[0].isnumeric():
-            cur.childDirs.append(int(tokens[0]))
+            cur.children.append(int(tokens[0]))
 
     resp = 0
 
     def dfs(node):
         nonlocal resp
         curTotal = 0
-        for child in node.childDirs:
+        for child in node.children:
             if type(child) == TreeNode:
                 curTotal += dfs(child)
             else:
