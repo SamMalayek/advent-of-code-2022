@@ -9,7 +9,7 @@ class TreeNode:
         self.children = children or []  # if dir, then TreeNode. if file, then int
 
 def main():
-    cur = TreeNode(None)
+    cur = TreeNode('/')
     root = cur
 
     for out in cli[1:]:
