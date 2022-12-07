@@ -2,11 +2,11 @@ from collections import defaultdict, deque
 file_input = open("input-day7.txt",'r')
 cli = [l.strip() for l in file_input.readlines()]
 
-class TreeNode:  # if dir, then string. if file, then int
+class TreeNode:
     def __init__(self, dirName, parent=None, children=None):
         self.dirName = dirName
         self.parent = parent
-        self.children = children or []
+        self.children = children or []  # if dir, then TreeNode. if file, then int
 
 def main():
     
