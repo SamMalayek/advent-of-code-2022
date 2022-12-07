@@ -9,7 +9,6 @@ class TreeNode:
         self.children = children or []  # if dir, then TreeNode. if file, then int
 
 def main():
-    prev = None
     cur = TreeNode(None)
     root = cur
 
